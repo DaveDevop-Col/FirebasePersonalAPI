@@ -1,5 +1,5 @@
 // src/components/registro.js
-import { auth, db } from '../firebaseConfig.js';
+import { auth } from '../firebaseConfig.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 

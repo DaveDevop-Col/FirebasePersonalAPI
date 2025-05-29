@@ -6,47 +6,37 @@ export function mostrarLogin(container) {
   container.innerHTML = `
     <h2>Login</h2>
     <form id="form-login">
-      <input type="email" id="correo" placeholder="Correo electrónico" required />
-      <input type="password" id="contrasena" placeholder="Contraseña" required />
+      <input type="email" id="email" placeholder="Correo electrónico" required />
+      <input type="password" id="password" placeholder="Contraseña" required />
       <button type="submit">Iniciar sesión</button>
     </form>
-    <p id="msg-error" style="color:red;"></p>
+    <p id="error-msg" style="color: red;"></p>
   `;
 
   const form = container.querySelector('#form-login');
-  const msgError = container.querySelector('#msg-error');
+  const errorMsg = container.querySelector('#error-msg');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const correo = form.correo.value.trim();
-    const contrasena = form.contrasena.value.trim();
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
 
     try {
-      await signInWithEmailAndPassword(auth, correo, contrasena);
-      msgError.textContent = '';
+      await signInWithEmailAndPassword(auth, email, password);
+      errorMsg.textContent = '';
       form.reset();
-      // onAuthStateChanged actualizará la UI automáticamente
+      alert('¡Inicio de sesión exitoso!'); // O aquí actualizas la UI
     } catch (error) {
-      // Mensajes amigables comunes de Firebase
-      let mensaje = '';
-      switch(error.code) {
-        case 'auth/user-not-found':
-          mensaje = 'Usuario no encontrado.';
-          break;
-        case 'auth/wrong-password':
-          mensaje = 'Contraseña incorrecta.';
-          break;
-        case 'auth/invalid-email':
-          mensaje = 'Correo electrónico inválido.';
-          break;
-        default:
-          mensaje = error.message;
+      // Mensajes simples según el error
+      if (error.code === 'auth/user-not-found') {
+        errorMsg.textContent = 'Usuario no encontrado.';
+      } else if (error.code === 'auth/wrong-password') {
+        errorMsg.textContent = 'Contraseña incorrecta.';
+      } else if (error.code === 'auth/invalid-email') {
+        errorMsg.textContent = 'Correo inválido.';
+      } else {
+        errorMsg.textContent = 'Error: ' + error.message;
       }
-      msgError.textContent = mensaje;
     }
   });
-
-  // Limpiar mensaje al cambiar inputs
-  form.correo.addEventListener('input', () => msgError.textContent = '');
-  form.contrasena.addEventListener('input', () => msgError.textContent = '');
 }
