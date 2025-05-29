@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ApiFirebase</string>
+    <string name="title_activity_main">ApiFirebase</string>
+    <string name="package_name">com.ApiFirebase.app</string>
+    <string name="custom_url_scheme">com.ApiFirebase.app</string>
+</resources>
