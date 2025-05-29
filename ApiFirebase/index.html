@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi Aplicación con Firebase</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <nav class="tabs">
+    <!-- Botón de Inicio añadido -->
+    <button id="tab-inicio" data-tab="inicio">Inicio</button>
+    <button id="tab-categorias" data-tab="categorias">Categorías</button>
+    <button id="tab-preguntas" data-tab="preguntas">Preguntas</button>
+    <button id="tab-informacion" data-tab="informacion">Información</button>
+    <button id="tab-historia" data-tab="historia">Historia</button>
+    <button id="tab-favoritos" data-tab="favoritos">Favoritos</button>
+    <button id="tab-ayuda" data-tab="ayuda">Ayuda</button>
+    
+    <!-- Tabs de autenticación -->
+    <div class="auth-tabs" style="margin-left: auto;">
+      <button id="tab-login" data-tab="login">Iniciar sesión</button>
+      <button id="tab-registro" data-tab="registro">Registrarse</button>
+      <button id="tab-perfil" data-tab="perfil" style="display:none;">Perfil</button>
+      <button id="tab-logout" data-tab="logout" style="display:none;">Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <main id="app">
+    <!-- Contenido dinámico se cargará aquí -->
+    <section id="inicio-content">
+      <h1>Bienvenido a la aplicación</h1>
+      <p>Selecciona una categoría para comenzar.</p>
+    </section>
+  </main>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+/* Variables CSS para consistencia y mantenimiento */
+:root {
+  --primary-color: #131e46;
+  --secondary-color: #33cc66;
+  --success-color: #28a745;
+  --error-color: #cc3333;
+  --text-primary: #333;
+  --text-light: #fff;
+  --bg-light: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-hover: #f0f0f0;
+  --border-color: #e0e0e0;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Reset y base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Navegación mejorada */
+nav.tabs {
+  display: flex;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #1a2c5a 100%);
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+  flex-wrap: wrap;
+  gap: 4px;
+  box-shadow: var(--shadow-medium);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 60px;
+}
+
+nav.tabs button {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: 80px;
+  text-align: center;
+}
+
+nav.tabs button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+nav.tabs button:hover::before {
+  left: 100%;
+}
+
+nav.tabs button:hover,
+nav.tabs button.active {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #28a745 100%);
+  color: var(--text-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Contenedor principal */
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 15px;
+  min-height: calc(100vh - 60px);
+}
+
+/* Estilos para Categorías mejorados */
+#categorias-lista {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+#categorias-lista button {
+  width: 100%;
+  padding: 16px 20px;
+  cursor: pointer;
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-color);
+  text-align: left;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
+  box-shadow: var(--shadow-light);
+  position: relative;
+}
+
+#categorias-lista button:hover {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #28a745 100%);
+  color: var(--text-light);
+  border-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Preguntas mejoradas */
+#preguntas-lista .pregunta {
+  margin-bottom: 25px;
+  padding: 24px;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-speed) ease;
+}
+
+#preguntas-lista .pregunta:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+#preguntas-lista .pregunta h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+#preguntas-lista button.option {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
+  background-color: var(--bg-card);
+}
+
+#preguntas-lista button.option:hover {
+  border-color: var(--secondary-color);
+  background-color: var(--bg-hover);
+  transform: translateX(4px);
+}
+
+#preguntas-lista button.option.correcta {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #28a745 100%);
+  color: var(--text-light);
+  border-color: var(--secondary-color);
+  box-shadow: var(--shadow-light);
+}
+
+#preguntas-lista button.option.incorrecta {
+  background: linear-gradient(135deg, var(--error-color) 0%, #dc3545 100%);
+  color: var(--text-light);
+  border-color: var(--error-color);
+  box-shadow: var(--shadow-light);
+}
+
+/* Favoritos mejorados */
+#favoritos-lista {
+  margin-top: 25px;
+  display: grid;
+  gap: 16px;
+}
+
+.favorito-item {
+  background-color: var(--bg-card);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.favorito-item:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.favorito-item h4 {
+  margin: 0 0 12px 0;
+  color: var(--primary-color);
+  font-size: 16px;
+}
+
+.favorito-item button {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: calc(var(--border-radius) / 2);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+}
+
+.favorito-item button:hover {
+  background-color: var(--success-color);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-light);
+}
+
+/* Mensaje de ayuda mejorado */
+#mensaje-ayuda {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+  margin-top: 20px;
+  padding: 16px 20px;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  border: 1px solid #c3e6cb;
+  box-shadow: var(--shadow-light);
+}
+
+/* Formularios mejorados */
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 24px 20px;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+}
+
+form h2 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  transition: all var(--transition-speed) ease;
+  background-color: var(--bg-light);
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  background-color: var(--bg-card);
+  box-shadow: 0 0 0 3px rgba(51, 204, 102, 0.1);
+}
+
+form button {
+  width: 100%;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--success-color) 100%);
+  color: var(--text-light);
+  border: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+form button:hover {
+  background: linear-gradient(135deg, var(--success-color) 0%, #218838 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+form button:active {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  nav.tabs {
+    padding: 6px 8px;
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  nav.tabs button {
+    font-size: 12px;
+    padding: 6px 8px;
+    min-width: 70px;
+    flex: 0 0 auto;
+  }
+  
+  #app {
+    padding: 15px 10px;
+  }
+  
+  form {
+    margin: 15px 10px;
+    padding: 20px 16px;
+    max-width: none;
+  }
+  
+  form h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  #preguntas-lista .pregunta {
+    padding: 16px 12px;
+    margin-bottom: 16px;
+  }
+  
+  #preguntas-lista .pregunta h3 {
+    font-size: 16px;
+  }
+  
+  .favorito-item {
+    padding: 16px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav.tabs {
+    padding: 4px 6px;
+    min-height: 50px;
+  }
+  
+  nav.tabs button {
+    font-size: 11px;
+    padding: 5px 6px;
+    min-width: 60px;
+    border-radius: 4px;
+  }
+  
+  #app {
+    padding: 12px 8px;
+  }
+  
+  form {
+    margin: 10px 8px;
+    padding: 16px 12px;
+  }
+  
+  form input,
+  form button {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  form h2 {
+    font-size: 16px;
+  }
+  
+  #preguntas-lista .pregunta {
+    padding: 12px 10px;
+  }
+  
+  .favorito-item {
+    padding: 12px 10px;
+  }
+  
+  .favorito-item h4 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  nav.tabs button {
+    font-size: 10px;
+    padding: 4px 5px;
+    min-width: 50px;
+  }
+  
+  form input {
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+}
